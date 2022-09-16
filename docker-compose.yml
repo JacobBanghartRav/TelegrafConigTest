@@ -1,0 +1,18 @@
+version: '3'
+services:
+  tel1.23:
+    image: telegraf:1.23-alpine
+    depends_on:
+      - influx
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+  tel1.24:
+    image: telegraf:1.24-alpine
+    depends_on:
+      - influx
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+  influx:
+    image: influxdb
+    ports:
+      - 8086:8086
